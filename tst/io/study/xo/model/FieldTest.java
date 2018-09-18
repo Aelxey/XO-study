@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class FieldTest {
     @Test
     public void getSize() throws Exception {
-        final Field field = new Field();
+        final Field field = new Field(3);
         int actualValue = field.getSize();
         int expectedValue = 3;
 
@@ -20,7 +20,7 @@ public class FieldTest {
 
     @Test
     public void setFigure() throws Exception {
-        final Field field = new Field();
+        final Field field = new Field(3);
         final Point inputPoint = new Point(0,0);
         final Figure inputFigure = Figure.O;
 
@@ -34,7 +34,7 @@ public class FieldTest {
 
     @Test
     public void testFigureWhenFigureIsNotSet() throws Exception {
-        final Field field = new Field();
+        final Field field = new Field(3);
         final Point inputPoint = new Point(0,0);
 
         final Figure actualFigure = field.getFigure(inputPoint);
@@ -44,7 +44,7 @@ public class FieldTest {
 
     @Test
     public void testFigureWhenXLessThanZero() throws Exception {
-        final Field field = new Field();
+        final Field field = new Field(3);
         final Point inputPoint = new Point(-1,0);
 
         try {
@@ -55,7 +55,7 @@ public class FieldTest {
 
     @Test
     public void testFigureWhenYLessThanZero() throws Exception {
-        final Field field = new Field();
+        final Field field = new Field(3);
         final Point inputPoint = new Point(0,-1);
 
         try {
@@ -66,7 +66,7 @@ public class FieldTest {
 
     @Test
     public void testFigureWhenXMoreThanSize() throws Exception {
-        final Field field = new Field();
+        final Field field = new Field(3);
         final Point inputPoint = new Point(field.getSize() + 1,0);
 
         try {
@@ -77,7 +77,7 @@ public class FieldTest {
 
     @Test
     public void testFigureWhenYMoreThanSize() throws Exception {
-        final Field field = new Field();
+        final Field field = new Field(3);
         final Point inputPoint = new Point(0,field.getSize() + 1);
 
         try {
