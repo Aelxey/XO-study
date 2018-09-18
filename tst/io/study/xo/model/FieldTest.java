@@ -63,4 +63,26 @@ public class FieldTest {
         } catch (final InvalidPointException e){}
     }
 
+    @Test
+    public void testFigureWhenXMoreThanSize() throws Exception {
+        final Field field = new Field();
+        final Point inputPoint = new Point(field.getSize() + 1,0);
+
+        try {
+            final Figure actualFigure = field.getFigure(inputPoint);
+            fail();
+        } catch (final InvalidPointException e){}
+    }
+
+    @Test
+    public void testFigureWhenYMoreThanSize() throws Exception {
+        final Field field = new Field();
+        final Point inputPoint = new Point(0,field.getSize() + 1);
+
+        try {
+            final Figure actualFigure = field.getFigure(inputPoint);
+            fail();
+        } catch (final InvalidPointException e){}
+    }
+
 }
