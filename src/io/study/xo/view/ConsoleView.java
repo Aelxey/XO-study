@@ -6,6 +6,7 @@ import io.study.xo.controllers.WinnerController;
 import io.study.xo.model.Field;
 import io.study.xo.model.Figure;
 import io.study.xo.model.Game;
+import io.study.xo.model.Player;
 import io.study.xo.model.exeptions.AlredyOccupiedException;
 import io.study.xo.model.exeptions.InvalidPointException;
 
@@ -22,7 +23,9 @@ public class ConsoleView {
     private final MoveController moveController = new MoveController();
 
     public void show(final Game game) {
-        System.out.format("Game name: %s\n", game.getName());
+
+        printPlayersName(game);
+
         final Field field = game.getField();
         for (int x = 0; x < field.getSize(); x++) {
             if (x != 0)
@@ -67,6 +70,15 @@ public class ConsoleView {
         } catch (final InputMismatchException e){
             System.out.println("Integers ONLY!!!!!");
             return askCoordinate(coordinateName);
+        }
+    }
+
+    private  void printPlayersName(final Game game){
+        System.out.format("Game name: %s\n", game.getName());
+
+        System.out.println("Players:");
+        for (Player player : game){
+            System.out.format("Player name: %s figure: %s\n", player.getName(), player.getFigure());
         }
     }
 
